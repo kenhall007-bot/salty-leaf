@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Salty Leaf Florist
+
+A Next.js website for **Salty Leaf**, a Mandurah-based florist crafting bespoke, seasonal floral experiences for weddings, farewells and events across Western Australia.
+
+## Features
+
+- **Public site** — home, weddings, farewells, events and contact pages
+- **Enquiry form** — visitors can submit enquiries, which are stored and managed by the admin
+- **Gallery** — image management with categories (wedding, farewell, event, general), drag-free reordering and Vercel Blob storage
+- **Admin dashboard** — secure login, dashboard, gallery and enquiry management
+- **Auth** — JWT-based authentication with bcrypt-hashed passwords and role support (admin / superadmin)
+- **Analytics** — Google Analytics (GA4) integration with a stats endpoint
+- **SEO** — metadata, JSON-LD structured data, sitemap and robots.txt
+- **Smooth scrolling** — Lenis-powered smooth scroll with motion animations
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) 16 (App Router, React 19)
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS](https://tailwindcss.com) v4 + [shadcn/ui](https://ui.shadcn.com)
+- [MongoDB](https://www.mongodb.com) with [Mongoose](https://mongoosejs.com)
+- [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) for image storage
+- [JWT](https://jwt.io) + [bcryptjs](https://github.com/dcodeIO/bcrypt.js) for authentication
+- [motion](https://motion.dev) + [lenis](https://lenis.darkroom.engineering) for animations and smooth scroll
+- [Google Analytics Data API](https://developers.google.com/analytics/devguides/reporting/data/v1)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v20+)
+- A MongoDB database
+- A Vercel Blob store (for gallery uploads)
+- (Optional) Google Analytics 4 property + service account
+
+### Setup
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Create a `.env.local` file (see [Environment Variables](#environment-variables)) with your credentials.
+
+3. Seed an admin user:
+
+   ```bash
+   npx tsx src/scripts/seedAdmin.ts
+   ```
+
+   > Default credentials are defined at the top of `src/scripts/seedAdmin.ts`. Update them before running.
+
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+| --- | --- |
+| `MONGODB_URI` | MongoDB connection string |
+| `JWT_SECRET` | Secret used to sign admin session tokens |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob read/write token for gallery uploads |
+| `NEXT_PUBLIC_GA_ID` | GA4 measurement ID (used for client-side tracking) |
+| `GA_CREDENTIALS` | Base64-encoded service account credentials for the analytics API |
+| `GA_PROPERTY_ID` | GA4 property ID for the analytics endpoint |
 
-## Learn More
+### Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the production bundle |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── (pages)/          # Public pages (home, weddings, farewells, events, contact)
+│   ├── admin/            # Admin login, dashboard, gallery, enquiries
+│   ├── api/              # API routes (auth, enquiries, gallery, analytics)
+│   ├── layout.tsx        # Root layout with fonts, SEO & analytics
+│   └── page.tsx          # Home page entry
+├── components/           # UI components & page sections
+├── config/
+│   └── mongoDB.ts        # Mongoose connection (cached)
+├── lib/
+│   └── utils.ts          # Shared utilities
+├── models/               # Mongoose models (Admin, Enquiry, GalleryImage)
+└── scripts/
+    └── seedAdmin.ts      # Admin seeding script
+```
+
+## Admin Access
+
+Navigate to `/admin/login` and sign in with the seeded admin credentials to manage enquiries and the gallery.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The easiest way to deploy is to use the [Vercel Platform](https://vercel.com/new) from the creators of Next.js. Configure the [environment variables](#environment-variables) in the Vercel project settings after importing the repository.
