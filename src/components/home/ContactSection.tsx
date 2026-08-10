@@ -10,7 +10,13 @@ const MotionLink = motion.create(Link)
 
 export default function ContactSection() {
     return (
-        <section className="w-full bg-[#435236] px-6 py-24 sm:px-10 sm:py-28 lg:px-14 lg:py-40">
+        <section
+            className="w-full bg-[#435236] px-6 py-24 sm:px-10 sm:py-28 lg:px-14 lg:py-40"
+            style={{
+                contentVisibility: "auto",
+                containIntrinsicSize: "1px 1000px",
+            }}
+        >
             <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-20 lg:grid-cols-2 lg:gap-32">
                 <motion.div
                     initial={{ opacity: 0, x: -40 }}

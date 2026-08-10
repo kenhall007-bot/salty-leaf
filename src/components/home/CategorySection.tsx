@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react"
 import Link from "next/link"
+import Image from "next/image"
 
 const MotionLink = motion.create(Link)
 
@@ -25,7 +26,13 @@ const categories = [
 
 export default function CategorySection() {
     return (
-        <section className="w-full">
+        <section
+            className="w-full"
+            style={{
+                contentVisibility: "auto",
+                containIntrinsicSize: "1px 2200px",
+            }}
+        >
             <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -44,13 +51,20 @@ export default function CategorySection() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="group relative block h-[600px] overflow-hidden sm:h-[700px] lg:h-[760px]"
                     >
-                        <motion.img
-                            src={category.image}
-                            alt={category.title}
+                        <motion.div
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.7, ease: "easeOut" }}
-                            className="absolute inset-0 h-full w-full object-cover"
-                        />
+                            className="absolute inset-0 overflow-hidden"
+                        >
+                            <Image
+                                src={category.image}
+                                alt={category.title}
+                                fill
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                                className="object-cover"
+                            />
+                        </motion.div>
 
                         <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/20" />
 

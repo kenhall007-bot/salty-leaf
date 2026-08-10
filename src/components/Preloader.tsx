@@ -18,6 +18,20 @@ export default function Preloader() {
     )
 
     useEffect(() => {
+        const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+        const isMobile = window.matchMedia("(max-width: 767px)").matches
+        const saveData =
+            (navigator as Navigator & {
+                connection?: { saveData?: boolean }
+            }).connection?.saveData ?? false
+
+        if (reduceMotion || isMobile || saveData) {
+            const frame = requestAnimationFrame(() => setPhase("done"))
+            return () => cancelAnimationFrame(frame)
+        }
+
         if (phase !== "reveal") return
 
         const timeout = setTimeout(() => setPhase("hold"), revealDelay)

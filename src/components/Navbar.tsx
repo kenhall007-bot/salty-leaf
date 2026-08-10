@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -23,8 +24,15 @@ export default function Navbar() {
                     className="font-[family-name:var(--font-cormorant)] text-5xl font-light tracking-[-0.04em] text-white sm:text-7xl"
                 >
                     {/* Salty Leaf */}
-
-                    <img src="/logo.png" className="md:h-24 h-16 brightness-0 invert" alt="" />
+                    <Image
+                        src="/logo.png"
+                        alt="Salty Leaf"
+                        width={220}
+                        height={88}
+                        priority
+                        sizes="(max-width: 768px) 160px, 220px"
+                        className="h-16 w-auto brightness-0 invert md:h-24"
+                    />
 
                 </Link>
 
