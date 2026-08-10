@@ -24,14 +24,7 @@ export async function GET(request: NextRequest) {
         console.error("GET /api/gallery error:", error)
 
         return NextResponse.json(
-            {
-                success: false,
-                message: "Failed to fetch gallery images",
-                debugError:
-                    error instanceof Error
-                        ? `${error.name}: ${error.message}\n${error.stack}`
-                        : String(error),
-            },
+            { success: false, message: "Failed to fetch gallery images" },
             { status: 500 }
         )
     }
