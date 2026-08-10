@@ -3,8 +3,8 @@ import Navbar from "@/components/Navbar"
 import Link from "next/link"
 import React, { useCallback, useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
-import GallerySection from "@/components/GallerySection"
 import { Loader2, X } from "lucide-react"
+import { getGalleryImageSrc } from "@/lib/gallery"
 
 const MotionLink = motion.create(Link)
 
@@ -244,7 +244,7 @@ export default function Events() {
         setGalleryError("")
 
         try {
-            const response = await fetch("/api/gallery?category=event", {
+            const response = await fetch("/api/gallery?category=event,general", {
                 cache: "no-store",
             })
             const result = await response.json()
@@ -613,7 +613,7 @@ export default function Events() {
                                                 className="mb-3 break-inside-avoid overflow-hidden"
                                             >
                                                 <img
-                                                    src={image.url}
+                                                    src={getGalleryImageSrc(image.url)}
                                                     alt="Event gallery"
                                                     className="w-full object-cover"
                                                 />

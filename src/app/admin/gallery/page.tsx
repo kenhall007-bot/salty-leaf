@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { upload } from "@vercel/blob/client"
+import { getGalleryImageSrc } from "@/lib/gallery"
 import {
     BarChart3,
     Image as ImageIcon,
@@ -455,7 +456,7 @@ export default function AdminGalleryPage() {
                                     className="group relative aspect-square overflow-hidden rounded-md border border-[#e3e0d6]"
                                 >
                                     <img
-                                        src={image.url}
+                                        src={getGalleryImageSrc(image.url)}
                                         alt={image.alt || "Gallery"}
                                         className="h-full w-full object-cover"
                                     />
@@ -505,7 +506,7 @@ export default function AdminGalleryPage() {
 
                         <div className="mt-6 overflow-hidden rounded-md">
                             <img
-                                src={deleteTarget.url}
+                                src={getGalleryImageSrc(deleteTarget.url)}
                                 alt="Gallery"
                                 className="h-32 w-full object-cover"
                             />

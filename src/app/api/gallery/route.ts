@@ -7,9 +7,12 @@ export async function GET(request: NextRequest) {
         await connectDB()
 
         const { searchParams } = new URL(request.url)
-        const category = searchParams.get("category")
+        const categoryParam = searchParams.get("category")
+        const categories = categoryParam
+            ? categoryParam.split(",").map((item) => item.trim()).filter(Boolean)
+            : []
 
-        const filter = category ? { category } : {}
+        const filter = categories.length > 0 ? { category: { $in: categories } } : {}
 
         const images = await GalleryImage.find(filter).sort({
             order: 1,
