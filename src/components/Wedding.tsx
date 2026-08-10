@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import React from 'react'
 import { motion } from 'motion/react'
+import CategoryGalleryModal from "@/components/CategoryGalleryModal"
 
 const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -87,6 +88,13 @@ export default function Wedding() {
                             reflect your story with thoughtful detail
                             and natural beauty.
                         </p>
+
+                        <CategoryGalleryModal
+                            title="Wedding Gallery"
+                            buttonLabel="View Gallery"
+                            categories={["wedding", "general"]}
+                            buttonClassName="mt-9 inline-flex items-center gap-3 border border-[#25251f] px-8 py-4 font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.15em] text-[#25251f] transition-colors duration-300 hover:bg-[#25251f] hover:text-[#f8f5ef]"
+                        />
                     </motion.div>
 
                     <motion.div
