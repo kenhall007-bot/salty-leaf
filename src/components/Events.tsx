@@ -1,10 +1,10 @@
 "use client"
 import Navbar from "@/components/Navbar"
 import Link from "next/link"
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import GallerySection from "@/components/GallerySection"
-import { X } from "lucide-react"
+import { Loader2, X } from "lucide-react"
 
 const MotionLink = motion.create(Link)
 
@@ -230,32 +230,49 @@ const fadeUp = {
     visible: { opacity: 1, y: 0 },
 }
 
-const galleryImages = [
-    "/gallery/img (1).jpg",
-    "/gallery/img (2).jpg",
-    "/gallery/img (3).jpg",
-    "/gallery/img (4).jpg",
-    "/gallery/img (5).jpg",
-    "/gallery/img (6).jpg",
-    "/gallery/img (7).jpg",
-    "/gallery/img (8).jpg",
-    "/gallery/img (9).jpg",
-    "/gallery/img (10).jpg",
-    "/gallery/img (11).jpg",
-    "/gallery/img (12).jpg",
-    "/gallery/img (13).jpg",
-    "/gallery/img (14).jpg",
-    "/gallery/img (15).jpg",
-    "/gallery/img (16).jpg",
-    "/gallery/img (17).jpg",
-    "/gallery/img (18).jpg",
-    "/gallery/img (19).jpg",
-    "/gallery/img (20).jpg"
-];
-
-
 export default function Events() {
     const [isGalleryOpen, setIsGalleryOpen] = useState(false)
+
+    const [isGalleryLoading, setIsGalleryLoading] = useState(true)
+    const [galleryImages, setGalleryImages] = useState<
+        { _id: string; url: string }[]
+    >([])
+    const [galleryError, setGalleryError] = useState("")
+
+    const fetchGallery = useCallback(async () => {
+        setIsGalleryLoading(true)
+        setGalleryError("")
+
+        try {
+            const response = await fetch("/api/gallery?category=event", {
+                cache: "no-store",
+            })
+            const result = await response.json()
+
+            if (!response.ok || !result.success) {
+                throw new Error(result.message || "Failed to load gallery")
+            }
+
+            setGalleryImages(result.data)
+        } catch (err) {
+            console.error("Failed to fetch event gallery:", err)
+            setGalleryError(
+                err instanceof Error ? err.message : "Something went wrong"
+            )
+        } finally {
+            setIsGalleryLoading(false)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!isGalleryOpen) return
+        if (galleryImages.length > 0) return
+
+        const load = async () => {
+            await fetchGallery()
+        }
+        load()
+    }, [isGalleryOpen, galleryImages.length, fetchGallery])
 
     useEffect(() => {
         document.body.style.overflow = isGalleryOpen ? "hidden" : ""
@@ -546,20 +563,64 @@ export default function Events() {
                                 </button>
                             </div>
 
-                            <div className="columns-2 gap-3 sm:columns-3 lg:columns-4">
-                                {galleryImages.map((src, i) => (
-                                    <div
-                                        key={i}
-                                        className="mb-3 break-inside-avoid overflow-hidden"
+                            {isGalleryLoading && (
+                                <div className="flex flex-col items-center justify-center gap-3 rounded-lg border border-[#e3e0d6] bg-[#faf9f6] py-20">
+                                    <Loader2
+                                        className="h-6 w-6 animate-spin text-[#8a8678]"
+                                        strokeWidth={1.75}
+                                    />
+                                    <p className="font-[family-name:var(--font-inter)] text-sm text-[#8a8678]">
+                                        Loading gallery...
+                                    </p>
+                                </div>
+                            )}
+
+                            {!isGalleryLoading && galleryError && (
+                                <div className="flex flex-col items-center justify-center gap-3 rounded-lg border border-red-200 bg-red-50 py-20 text-center">
+                                    <p className="font-[family-name:var(--font-inter)] text-sm text-red-800">
+                                        {galleryError}
+                                    </p>
+                                    <button
+                                        type="button"
+                                        onClick={fetchGallery}
+                                        className="border border-red-800 px-5 py-2 font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-red-800 transition-colors duration-200 hover:bg-red-800 hover:text-white"
                                     >
-                                        <img
-                                            src={src}
-                                            alt="Event gallery"
-                                            className="w-full object-cover"
-                                        />
+                                        Try Again
+                                    </button>
+                                </div>
+                            )}
+
+                            {!isGalleryLoading &&
+                                !galleryError &&
+                                galleryImages.length === 0 && (
+                                    <div className="flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-[#d8d6cf] bg-[#faf9f6] py-20 text-center">
+                                        <p className="font-[family-name:var(--font-cormorant)] text-xl text-[#1f211d]">
+                                            No event photos yet
+                                        </p>
+                                        <p className="font-[family-name:var(--font-inter)] text-sm text-[#8a8678]">
+                                            Check back soon.
+                                        </p>
                                     </div>
-                                ))}
-                            </div>
+                                )}
+
+                            {!isGalleryLoading &&
+                                !galleryError &&
+                                galleryImages.length > 0 && (
+                                    <div className="columns-2 gap-3 sm:columns-3 lg:columns-4">
+                                        {galleryImages.map((image) => (
+                                            <div
+                                                key={image._id}
+                                                className="mb-3 break-inside-avoid overflow-hidden"
+                                            >
+                                                <img
+                                                    src={image.url}
+                                                    alt="Event gallery"
+                                                    className="w-full object-cover"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                         </motion.div>
                     </motion.div>
                 )}

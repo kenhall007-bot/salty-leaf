@@ -55,6 +55,7 @@ export default function AdminGalleryPage() {
     const [isDragging, setIsDragging] = useState(false)
     const [isUploading, setIsUploading] = useState(false)
     const [uploadError, setUploadError] = useState("")
+    const [uploadCategory, setUploadCategory] = useState("general")
 
     const [deleteTarget, setDeleteTarget] = useState<GalleryImage | null>(null)
     const [isModalMounted, setIsModalMounted] = useState(false)
@@ -125,7 +126,10 @@ export default function AdminGalleryPage() {
                 const response = await fetch("/api/gallery", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ url: blob.url }),
+                    body: JSON.stringify({
+                        url: blob.url,
+                        category: uploadCategory,
+                    }),
                 })
 
                 const result = await response.json()
@@ -322,6 +326,27 @@ export default function AdminGalleryPage() {
                     <p className="mt-1 font-[family-name:var(--font-inter)] text-xs text-[#8a8678]">
                         or click to browse — JPG, PNG up to 10MB each
                     </p>
+                </div>
+
+                <div className="mt-4 flex items-center gap-3">
+                    <label
+                        htmlFor="upload-category"
+                        className="font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-[#8a8678]"
+                    >
+                        Category
+                    </label>
+
+                    <select
+                        id="upload-category"
+                        value={uploadCategory}
+                        onChange={(e) => setUploadCategory(e.target.value)}
+                        className="rounded-md border border-[#d8d6cf] bg-[#faf9f6] px-3 py-2 font-[family-name:var(--font-inter)] text-sm text-[#1f211d] focus:border-[#435236] focus:outline-none"
+                    >
+                        <option value="wedding">Wedding</option>
+                        <option value="farewell">Farewell</option>
+                        <option value="event">Event</option>
+                        <option value="general">General</option>
+                    </select>
                 </div>
 
                 {pendingFiles.length > 0 && (
