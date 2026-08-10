@@ -5,7 +5,7 @@ import Admin from "@/models/Admin"
 
 const ADMIN_NAME = "Salty Leaf Admin"
 const ADMIN_EMAIL = "admin@saltyleaf.com"
-const ADMIN_PASSWORD = "12345678"
+const ADMIN_PASSWORD = "Ezyrock_567"
 
 async function seedAdmin() {
     await connectDB()

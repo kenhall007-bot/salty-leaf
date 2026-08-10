@@ -193,13 +193,7 @@ export default function AdminEnquiriesPage() {
                         Back to Website
                     </Link>
 
-                    <button
-                        type="button"
-                        className="flex items-center gap-3 rounded-md px-4 py-3 text-left font-[family-name:var(--font-inter)] text-sm font-medium text-red-800 transition-colors duration-200 hover:bg-red-50"
-                    >
-                        <LogOut className="h-4 w-4" strokeWidth={1.75} />
-                        Log Out
-                    </button>
+                   
                 </div>
             </aside>
 
