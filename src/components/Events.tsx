@@ -1,9 +1,10 @@
 "use client"
 import Navbar from "@/components/Navbar"
 import Link from "next/link"
-import React from "react"
-import { motion } from "motion/react"
+import React, { useEffect, useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
 import GallerySection from "@/components/GallerySection"
+import { X } from "lucide-react"
 
 const MotionLink = motion.create(Link)
 
@@ -229,8 +230,52 @@ const fadeUp = {
     visible: { opacity: 1, y: 0 },
 }
 
+const galleryImages = [
+    "/gallery/img (1).jpg",
+    "/gallery/img (2).jpg",
+    "/gallery/img (3).jpg",
+    "/gallery/img (4).jpg",
+    "/gallery/img (5).jpg",
+    "/gallery/img (6).jpg",
+    "/gallery/img (7).jpg",
+    "/gallery/img (8).jpg",
+    "/gallery/img (9).jpg",
+    "/gallery/img (10).jpg",
+    "/gallery/img (11).jpg",
+    "/gallery/img (12).jpg",
+    "/gallery/img (13).jpg",
+    "/gallery/img (14).jpg",
+    "/gallery/img (15).jpg",
+    "/gallery/img (16).jpg",
+    "/gallery/img (17).jpg",
+    "/gallery/img (18).jpg",
+    "/gallery/img (19).jpg",
+    "/gallery/img (20).jpg"
+];
+
+
 export default function Events() {
-  return (
+    const [isGalleryOpen, setIsGalleryOpen] = useState(false)
+
+    useEffect(() => {
+        document.body.style.overflow = isGalleryOpen ? "hidden" : ""
+
+        return () => {
+            document.body.style.overflow = ""
+        }
+    }, [isGalleryOpen])
+
+    useEffect(() => {
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setIsGalleryOpen(false)
+        }
+
+        window.addEventListener("keydown", handleKey)
+
+        return () => window.removeEventListener("keydown", handleKey)
+    }, [])
+
+    return (
         <main>
             <section className="relative h-screen min-h-[650px] w-full overflow-hidden">
                 <Navbar />
@@ -246,7 +291,6 @@ export default function Events() {
 
                 <div className="absolute md:block hidden inset-0 bg-gradient-to-r from-black/40 to-transparent" />
                 <div className="absolute md:hidden inset-0 bg-black/35" />
-
 
                 <motion.div
                     initial="hidden"
@@ -308,6 +352,20 @@ export default function Events() {
                             designed to complement your space and create
                             something memorable.
                         </p>
+
+                        <motion.button
+                            type="button"
+                            onClick={() => setIsGalleryOpen(true)}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            className="mt-9 inline-flex items-center gap-3 border border-[#25251f] px-8 py-4 font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.15em] text-[#25251f] transition-colors duration-300 hover:bg-[#25251f] hover:text-[#f8f5ef]"
+                        >
+                            View Gallery
+                        </motion.button>
                     </motion.div>
 
                     <motion.div
@@ -325,8 +383,6 @@ export default function Events() {
                     </motion.div>
                 </div>
             </section>
-
-            {/* <GallerySection /> */}
 
             <section className="bg-[#faf9f6] px-6 py-20 sm:px-10 lg:px-14 lg:py-24">
                 <div className="mx-auto max-w-[1400px]">
@@ -425,8 +481,6 @@ export default function Events() {
                 </div>
             </section>
 
-
-
             <section
                 id="enquire"
                 className="relative h-[650px] min-h-[600px] w-full overflow-hidden sm:h-[750px]"
@@ -457,6 +511,59 @@ export default function Events() {
                     </MotionLink>
                 </div>
             </section>
+
+            <AnimatePresence>
+                {isGalleryOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        onClick={() => setIsGalleryOpen(false)}
+                        className="fixed inset-0 z-[999] flex items-center justify-center bg-black/90 p-4 sm:p-8"
+                    >
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                            onClick={(e) => e.stopPropagation()}
+                            data-lenis-prevent
+                            className="relative h-full max-h-[85vh] w-full max-w-6xl overflow-y-auto bg-[#faf9f6] p-4 sm:p-8"
+                        >
+                            <div className="mb-6 flex items-center justify-between">
+                                <h3 className="font-[family-name:var(--font-cormorant)] text-3xl font-medium uppercase tracking-[-0.02em] text-[#1f211d] sm:text-4xl">
+                                    Event Gallery
+                                </h3>
+
+                                <button
+                                    type="button"
+                                    onClick={() => setIsGalleryOpen(false)}
+                                    aria-label="Close"
+                                    className="text-[#55554e] transition-opacity hover:opacity-60"
+                                >
+                                    <X className="h-6 w-6" strokeWidth={1.75} />
+                                </button>
+                            </div>
+
+                            <div className="columns-2 gap-3 sm:columns-3 lg:columns-4">
+                                {galleryImages.map((src, i) => (
+                                    <div
+                                        key={i}
+                                        className="mb-3 break-inside-avoid overflow-hidden"
+                                    >
+                                        <img
+                                            src={src}
+                                            alt="Event gallery"
+                                            className="w-full object-cover"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </main>
     )
 }
