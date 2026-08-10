@@ -40,12 +40,15 @@ export default function ContactSection() {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         className="mb-10"
                     >
-                        <h3 className=" md:text-lg mb-2 font-semibold">
+                        <h3 className="md:text-lg mb-2 font-semibold">
                             Address
                         </h3>
 
-                        <p className=" md:text-lg font-normal leading-relaxed">
+                        <p className="md:text-lg font-normal leading-relaxed">
                             5/10 Rafferty Road, Mandurah 6210
+                        </p>
+                        <p className="md:text-lg font-normal leading-relaxed">
+                            By Appointment Only
                         </p>
                     </motion.div>
 

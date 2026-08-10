@@ -160,14 +160,6 @@ export default function Contact() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="mx-auto mt-6 h-[2px] w-20 bg-white"
                         />
-
-                        <motion.p
-                            variants={fadeUp}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="mx-auto mt-5 max-w-xl font-[family-name:var(--font-cormorant)] text-2xl font-light text-white sm:text-3xl"
-                        >
-                            Let&apos;s create something beautiful together.
-                        </motion.p>
                     </div>
                 </motion.div>
             </section>
@@ -206,6 +198,9 @@ export default function Contact() {
                                     5/10 Rafferty Road,
                                     <br />
                                     Mandurah 6210
+                                </p>
+                                <p className="mt-2 font-[family-name:var(--font-cormorant)] text-xl text-[#25251f]">
+                                    By Appointment Only
                                 </p>
                             </div>
 

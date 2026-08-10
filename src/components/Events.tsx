@@ -239,7 +239,7 @@ export default function Events() {
                     initial={{ scale: 1.15 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-                    src="/vinyard.png"
+                    src="/events.png"
                     alt="Elegant event setting"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -436,7 +436,7 @@ export default function Events() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="/entrance.png"
+                    src="/Eventbottom.png"
                     alt="Beautiful event floral arrangement"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
