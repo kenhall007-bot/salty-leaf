@@ -14,7 +14,7 @@ const categories = [
     },
     {
         title: "FAREWELLS",
-        image: "/farewell2.png",
+        image: "/farewell home page image.png",
         href: "/farewells",
     },
     {
