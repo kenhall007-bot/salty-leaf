@@ -21,13 +21,12 @@ export default function Preloader() {
         const reduceMotion = window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         ).matches
-        const isMobile = window.matchMedia("(max-width: 767px)").matches
         const saveData =
             (navigator as Navigator & {
                 connection?: { saveData?: boolean }
             }).connection?.saveData ?? false
 
-        if (reduceMotion || isMobile || saveData) {
+        if (reduceMotion || saveData) {
             const frame = requestAnimationFrame(() => setPhase("done"))
             return () => cancelAnimationFrame(frame)
         }
