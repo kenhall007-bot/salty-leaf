@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import mongoose from "mongoose"
 import connectDB from "@/config/mongoDB"
 import Enquiry from "@/models/Enquiry"
+import { requireAdminAuth } from "@/lib/admin-auth"
 
 type RouteParams = {
     params: Promise<{ id: string }>
@@ -13,6 +14,12 @@ function isValidId(id: string) {
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
     try {
+        const auth = requireAdminAuth(request)
+
+        if ("error" in auth) {
+            return auth.error
+        }
+
         const { id } = await params
 
         if (!isValidId(id)) {
@@ -49,6 +56,12 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 export async function PATCH(request: NextRequest, { params }: RouteParams) {
     try {
+        const auth = requireAdminAuth(request)
+
+        if ("error" in auth) {
+            return auth.error
+        }
+
         const { id } = await params
 
         if (!isValidId(id)) {
@@ -99,6 +112,12 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
 
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
     try {
+        const auth = requireAdminAuth(request)
+
+        if ("error" in auth) {
+            return auth.error
+        }
+
         const { id } = await params
 
         if (!isValidId(id)) {

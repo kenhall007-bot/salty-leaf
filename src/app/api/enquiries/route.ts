@@ -1,9 +1,16 @@
 import { NextRequest, NextResponse } from "next/server"
 import connectDB from "@/config/mongoDB"
 import Enquiry from "@/models/Enquiry"
+import { requireAdminAuth } from "@/lib/admin-auth"
 
 export async function GET(request: NextRequest) {
     try {
+        const auth = requireAdminAuth(request)
+
+        if ("error" in auth) {
+            return auth.error
+        }
+
         await connectDB()
 
         const { searchParams } = new URL(request.url)

@@ -13,8 +13,6 @@ const navItems = [
     { name: "Contact", href: "/contact" },
 ]
 
-// header
-
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
 
