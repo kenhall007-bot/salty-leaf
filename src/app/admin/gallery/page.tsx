@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { upload } from "@vercel/blob/client"
+import imageCompression from "browser-image-compression"
 import { getGalleryImageSrc } from "@/lib/gallery"
 import {
     BarChart3,
@@ -35,6 +36,15 @@ type PendingFile = {
     id: string
     file: File
     previewUrl: string
+    originalSize?: number
+    compressedSize?: number
+}
+
+function formatFileSize(bytes: number): string {
+    if (bytes < 1024 * 1024) {
+        return `${Math.round(bytes / 1024)}KB`
+    }
+    return `${(bytes / (1024 * 1024)).toFixed(1)}MB`
 }
 
 function formatDate(iso: string) {
@@ -53,6 +63,7 @@ export default function AdminGalleryPage() {
     const [loadError, setLoadError] = useState("")
 
     const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([])
+    const [isCompressing, setIsCompressing] = useState(false)
     const [isDragging, setIsDragging] = useState(false)
     const [isUploading, setIsUploading] = useState(false)
     const [uploadError, setUploadError] = useState("")
@@ -94,18 +105,71 @@ export default function AdminGalleryPage() {
         load()
     }, [])
 
-    const addFiles = (fileList: FileList | null) => {
+    const addFiles = async (fileList: FileList | null) => {
         if (!fileList) return
 
-        const next: PendingFile[] = Array.from(fileList)
-            .filter((file) => file.type.startsWith("image/"))
-            .map((file) => ({
-                id: `${file.name}-${file.lastModified}-${Math.random()}`,
-                file,
-                previewUrl: URL.createObjectURL(file),
-            }))
+        const validFiles = Array.from(fileList).filter((file) =>
+            file.type.startsWith("image/")
+        )
 
-        setPendingFiles((prev) => [...prev, ...next])
+        if (validFiles.length === 0) return
+
+        setIsCompressing(true)
+
+        const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 2000,
+            useWebWorker: true,
+        }
+
+        try {
+            const results = await Promise.all(
+                validFiles.map(async (file) => {
+                    const originalSize = file.size
+                    try {
+                        const compressedBlob = await imageCompression(file, options)
+                        const compressedFile = new File([compressedBlob], file.name, {
+                            type: compressedBlob.type,
+                            lastModified: Date.now(),
+                        })
+                        return {
+                            file: compressedFile,
+                            originalSize,
+                            compressedSize: compressedFile.size,
+                        }
+                    } catch (error) {
+                        console.warn(
+                            `Image compression failed for ${file.name}, using original file:`,
+                            error
+                        )
+                        return {
+                            file,
+                            originalSize,
+                            compressedSize: originalSize,
+                        }
+                    }
+                })
+            )
+
+            const next: PendingFile[] = results.map(
+                ({ file, originalSize, compressedSize }) => ({
+                    id: `${file.name}-${file.lastModified}-${Math.random()}`,
+                    file,
+                    previewUrl: URL.createObjectURL(file),
+                    originalSize,
+                    compressedSize,
+                })
+            )
+
+            setPendingFiles((prev) => [...prev, ...next])
+        } catch (err) {
+            console.error("Batch compression failed:", err)
+        } finally {
+            setIsCompressing(false)
+            if (fileInputRef.current) {
+                fileInputRef.current.value = ""
+            }
+        }
     }
 
     const removePendingFile = (id: string) => {
@@ -289,18 +353,22 @@ export default function AdminGalleryPage() {
                 <div
                     onDragOver={(e) => {
                         e.preventDefault()
-                        setIsDragging(true)
+                        if (!isCompressing) setIsDragging(true)
                     }}
                     onDragLeave={() => setIsDragging(false)}
                     onDrop={(e) => {
                         e.preventDefault()
                         setIsDragging(false)
-                        addFiles(e.dataTransfer.files)
+                        if (!isCompressing) addFiles(e.dataTransfer.files)
                     }}
-                    onClick={() => fileInputRef.current?.click()}
-                    className={`flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed px-6 py-14 text-center transition-colors duration-200 ${isDragging
-                        ? "border-[#435236] bg-[#435236]/5"
-                        : "border-[#d8d6cf] bg-[#faf9f6] hover:border-[#bcb8af]"
+                    onClick={() => {
+                        if (!isCompressing) fileInputRef.current?.click()
+                    }}
+                    className={`flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed px-6 py-14 text-center transition-colors duration-200 ${isCompressing
+                            ? "cursor-wait border-[#435236]/40 bg-[#435236]/5 opacity-80"
+                            : isDragging
+                                ? "border-[#435236] bg-[#435236]/5"
+                                : "border-[#d8d6cf] bg-[#faf9f6] hover:border-[#bcb8af]"
                         }`}
                 >
                     <input
@@ -308,22 +376,42 @@ export default function AdminGalleryPage() {
                         type="file"
                         accept="image/*"
                         multiple
+                        disabled={isCompressing}
                         onChange={(e) => addFiles(e.target.files)}
                         className="hidden"
                     />
 
-                    <UploadCloud
-                        className="h-8 w-8 text-[#8a8678]"
-                        strokeWidth={1.5}
-                    />
+                    {isCompressing ? (
+                        <>
+                            <Loader2
+                                className="h-8 w-8 animate-spin text-[#435236]"
+                                strokeWidth={1.75}
+                            />
 
-                    <p className="mt-4 font-[family-name:var(--font-cormorant)] text-xl text-[#1f211d]">
-                        Drag and drop images here
-                    </p>
+                            <p className="mt-4 font-[family-name:var(--font-cormorant)] text-xl text-[#1f211d]">
+                                Compressing images...
+                            </p>
 
-                    <p className="mt-1 font-[family-name:var(--font-inter)] text-xs text-[#8a8678]">
-                        or click to browse — JPG, PNG up to 10MB each
-                    </p>
+                            <p className="mt-1 font-[family-name:var(--font-inter)] text-xs text-[#8a8678]">
+                                Optimizing files for web upload...
+                            </p>
+                        </>
+                    ) : (
+                        <>
+                            <UploadCloud
+                                className="h-8 w-8 text-[#8a8678]"
+                                strokeWidth={1.5}
+                            />
+
+                            <p className="mt-4 font-[family-name:var(--font-cormorant)] text-xl text-[#1f211d]">
+                                Drag and drop images here
+                            </p>
+
+                            <p className="mt-1 font-[family-name:var(--font-inter)] text-xs text-[#8a8678]">
+                                or click to browse — JPG, PNG up to 10MB each
+                            </p>
+                        </>
+                    )}
                 </div>
 
                 <div className="mt-4 flex flex-wrap items-center gap-6">
@@ -397,13 +485,21 @@ export default function AdminGalleryPage() {
                             {pendingFiles.map((item) => (
                                 <div
                                     key={item.id}
-                                    className="group relative aspect-square overflow-hidden rounded-md"
+                                    className="group relative aspect-square overflow-hidden rounded-md border border-[#e3e0d6]"
                                 >
                                     <img
                                         src={item.previewUrl}
                                         alt={item.file.name}
                                         className="h-full w-full object-cover"
                                     />
+
+                                    {item.originalSize &&
+                                        item.compressedSize &&
+                                        item.compressedSize < item.originalSize && (
+                                            <div className="absolute bottom-0 inset-x-0 bg-black/75 px-1 py-0.5 text-center font-[family-name:var(--font-inter)] text-[9px] font-medium text-white backdrop-blur-xs">
+                                                {formatFileSize(item.originalSize)} → {formatFileSize(item.compressedSize)}
+                                            </div>
+                                        )}
 
                                     {!isUploading && (
                                         <button
