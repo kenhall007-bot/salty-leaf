@@ -11,16 +11,19 @@ const categories = [
         title: "WEDDINGS",
         image: "/home2.jpg",
         href: "/weddings",
+        alt: "Wedding florist Mandurah - wedding floral arrangements",
     },
     {
         title: "FAREWELLS",
         image: "/farewell home page image.png",
         href: "/farewells",
+        alt: "Funeral florist Mandurah - farewell floral tributes",
     },
     {
         title: "EVENTS",
         image: "/home1.jpg",
         href: "/events",
+        alt: "Event florist Mandurah - event floral styling",
     },
 ]
 
@@ -58,7 +61,7 @@ export default function CategorySection() {
                         >
                             <Image
                                 src={category.image}
-                                alt={category.title}
+                                alt={category.alt}
                                 fill
                                 loading="lazy"
                                 sizes="(max-width: 768px) 100vw, 33vw"

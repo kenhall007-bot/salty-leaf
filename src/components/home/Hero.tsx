@@ -13,7 +13,7 @@ export default function Hero() {
         >
             <Image
                 src="/homebg.png"
-                alt="Wedding ceremony"
+                alt="Wedding florist Mandurah - bespoke floral styling for wedding ceremony"
                 fill
                 priority
                 sizes="100vw"

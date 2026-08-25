@@ -8,6 +8,7 @@ import { getGalleryImageSrc } from "@/lib/gallery"
 type GalleryImage = {
     _id: string
     url: string
+    alt?: string
 }
 
 type CategoryGalleryModalProps = {
@@ -184,7 +185,7 @@ export default function CategoryGalleryModal({
                                             >
                                                 <img
                                                     src={getGalleryImageSrc(image.url)}
-                                                    alt={title}
+                                                    alt={image.alt || "Salty Leaf florist"}
                                                     className="w-full object-cover"
                                                 />
                                             </div>

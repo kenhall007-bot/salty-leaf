@@ -23,7 +23,7 @@ export default function Wedding() {
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     src="/weddingbg.jpg"
-                    alt="Wedding ceremony"
+                    alt="Wedding florist Mandurah - ceremony floral arch setup"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 md:bg-black/0 bg-black/35" />
@@ -106,7 +106,7 @@ export default function Wedding() {
                     >
                         <img
                             src="/wedding1.png"
-                            alt="Wedding floral arrangement"
+                            alt="Wedding florist Mandurah - bridal bouquet and ceremony florals"
                             className="h-[500px] w-full object-cover sm:h-[600px] lg:h-[680px]"
                         />
                     </motion.div>
@@ -277,7 +277,7 @@ export default function Wedding() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                     src="/wedding2.png"
-                    alt="Outdoor wedding setting"
+                    alt="Wedding florist Mandurah - outdoor wedding venue floral setup"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
 

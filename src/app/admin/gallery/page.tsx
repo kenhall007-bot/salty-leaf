@@ -57,6 +57,7 @@ export default function AdminGalleryPage() {
     const [isUploading, setIsUploading] = useState(false)
     const [uploadError, setUploadError] = useState("")
     const [uploadCategory, setUploadCategory] = useState("general")
+    const [uploadAlt, setUploadAlt] = useState("")
 
     const [deleteTarget, setDeleteTarget] = useState<GalleryImage | null>(null)
     const [isModalMounted, setIsModalMounted] = useState(false)
@@ -130,6 +131,7 @@ export default function AdminGalleryPage() {
                     body: JSON.stringify({
                         url: blob.url,
                         category: uploadCategory,
+                        alt: uploadAlt,
                     }),
                 })
 
@@ -144,6 +146,7 @@ export default function AdminGalleryPage() {
 
             pendingFiles.forEach((item) => URL.revokeObjectURL(item.previewUrl))
             setPendingFiles([])
+            setUploadAlt("")
             await fetchImages()
         } catch (err) {
             console.error("Upload failed:", err)
@@ -323,25 +326,45 @@ export default function AdminGalleryPage() {
                     </p>
                 </div>
 
-                <div className="mt-4 flex items-center gap-3">
-                    <label
-                        htmlFor="upload-category"
-                        className="font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-[#8a8678]"
-                    >
-                        Category
-                    </label>
+                <div className="mt-4 flex flex-wrap items-center gap-6">
+                    <div className="flex items-center gap-3">
+                        <label
+                            htmlFor="upload-category"
+                            className="font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-[#8a8678]"
+                        >
+                            Category
+                        </label>
 
-                    <select
-                        id="upload-category"
-                        value={uploadCategory}
-                        onChange={(e) => setUploadCategory(e.target.value)}
-                        className="rounded-md border border-[#d8d6cf] bg-[#faf9f6] px-3 py-2 font-[family-name:var(--font-inter)] text-sm text-[#1f211d] focus:border-[#435236] focus:outline-none"
-                    >
-                        <option value="wedding">Wedding</option>
-                        <option value="farewell">Farewell</option>
-                        <option value="event">Event</option>
-                        <option value="general">General</option>
-                    </select>
+                        <select
+                            id="upload-category"
+                            value={uploadCategory}
+                            onChange={(e) => setUploadCategory(e.target.value)}
+                            className="rounded-md border border-[#d8d6cf] bg-[#faf9f6] px-3 py-2 font-[family-name:var(--font-inter)] text-sm text-[#1f211d] focus:border-[#435236] focus:outline-none"
+                        >
+                            <option value="wedding">Wedding</option>
+                            <option value="farewell">Farewell</option>
+                            <option value="event">Event</option>
+                            <option value="general">General</option>
+                        </select>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                        <label
+                            htmlFor="upload-alt"
+                            className="font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-[#8a8678]"
+                        >
+                            Description / Alt Text
+                        </label>
+
+                        <input
+                            id="upload-alt"
+                            type="text"
+                            placeholder="e.g. wedding-florist-mandurah-bridal-bouquet"
+                            value={uploadAlt}
+                            onChange={(e) => setUploadAlt(e.target.value)}
+                            className="w-72 rounded-md border border-[#d8d6cf] bg-[#faf9f6] px-3 py-2 font-[family-name:var(--font-inter)] text-sm text-[#1f211d] focus:border-[#435236] focus:outline-none"
+                        />
+                    </div>
                 </div>
 
                 {pendingFiles.length > 0 && (
@@ -451,7 +474,7 @@ export default function AdminGalleryPage() {
                                 >
                                     <img
                                         src={getGalleryImageSrc(image.url)}
-                                        alt={image.alt || "Gallery"}
+                                        alt={image.alt || "Salty Leaf florist"}
                                         className="h-full w-full object-cover"
                                     />
 
@@ -501,7 +524,7 @@ export default function AdminGalleryPage() {
                         <div className="mt-6 overflow-hidden rounded-md">
                             <img
                                 src={getGalleryImageSrc(deleteTarget.url)}
-                                alt="Gallery"
+                                alt={deleteTarget.alt || "Salty Leaf florist"}
                                 className="h-32 w-full object-cover"
                             />
                         </div>

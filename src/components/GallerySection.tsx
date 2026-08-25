@@ -102,7 +102,7 @@ export default function GallerySection() {
                     >
                         <img
                             src={src}
-                            alt="Gallery"
+                            alt="Salty Leaf florist Mandurah gallery image"
                             className="h-full w-full object-cover"
                         />
                     </motion.button>
@@ -136,7 +136,7 @@ export default function GallerySection() {
                             key={activeIndex}
                             layoutId={`gallery-image-${activeIndex}`}
                             src={galleryImages[activeIndex]}
-                            alt="Gallery expanded"
+                            alt="Salty Leaf florist Mandurah gallery image preview"
                             onClick={(e) => e.stopPropagation()}
                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                             className="max-h-full max-w-full cursor-zoom-out object-contain"

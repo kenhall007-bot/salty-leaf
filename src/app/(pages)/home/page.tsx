@@ -6,9 +6,9 @@ import ContactSection from "@/components/home/ContactSection"
 import Hero from "@/components/home/Hero"
 
 export const metadata: Metadata = {
-    title: "Florist in Mandurah, WA",
+    title: "Salty Leaf Florist | Wedding & Funeral Florist Mandurah",
     description:
-        "Salty Leaf is a Mandurah-based florist crafting thoughtful floral experiences for weddings, farewells and events. Bespoke, seasonal, made with care.",
+        "Salty Leaf is a Mandurah florist crafting bespoke floral arrangements for weddings, funeral flowers, and events across Mandurah, Halls Head, Dawesville, and surrounding suburbs.",
     alternates: {
         canonical: "/",
     },

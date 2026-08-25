@@ -24,7 +24,7 @@ export default function Farewell() {
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     src="/farewellbg.png"
-                    alt="Floral arrangement"
+                    alt="Funeral florist Mandurah - memorial flower arrangement"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
 
@@ -108,7 +108,7 @@ export default function Farewell() {
                     >
                         <img
                             src="/home3.jpg"
-                            alt="Funeral floral arrangement"
+                            alt="Funeral florist Mandurah - compassionate funeral floral tribute"
                             className="h-[500px] w-full object-cover sm:h-[600px] lg:h-[680px]"
                         />
                     </motion.div>
@@ -236,7 +236,7 @@ export default function Farewell() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                     src="/farewell1.jpg"
-                    alt="Floral heart arrangement"
+                    alt="Funeral flowers Mandurah - floral heart casket tribute"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
 

@@ -240,7 +240,7 @@ export default function Events() {
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     src="/events.png"
-                    alt="Elegant event setting"
+                    alt="Event florist Mandurah - corporate and private event floral styling"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
 
@@ -325,7 +325,7 @@ export default function Events() {
                     >
                         <img
                             src="/event3.jpeg"
-                            alt="Event floral styling"
+                            alt="Event florist Mandurah - bespoke venue floral installation"
                             className="h-[500px] w-full object-cover sm:h-[600px] lg:h-[680px]"
                         />
                     </motion.div>
@@ -439,7 +439,7 @@ export default function Events() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                     src="/Eventbottom.png"
-                    alt="Beautiful event floral arrangement"
+                    alt="Event florist Mandurah - floral table centerpiece styling"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
 
