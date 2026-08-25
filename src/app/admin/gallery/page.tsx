@@ -69,7 +69,6 @@ export default function AdminGalleryPage() {
     const [isUploading, setIsUploading] = useState(false)
     const [uploadError, setUploadError] = useState("")
     const [uploadCategory, setUploadCategory] = useState("general")
-    const [uploadAlt, setUploadAlt] = useState("")
 
     const [deleteTarget, setDeleteTarget] = useState<GalleryImage | null>(null)
     const [isModalMounted, setIsModalMounted] = useState(false)
@@ -157,7 +156,7 @@ export default function AdminGalleryPage() {
                     id: `${file.name}-${file.lastModified}-${Math.random()}`,
                     file,
                     previewUrl: URL.createObjectURL(file),
-                    alt: uploadAlt || "",
+                    alt: "",
                     originalSize,
                     compressedSize,
                 })
@@ -184,13 +183,6 @@ export default function AdminGalleryPage() {
         )
     }
 
-    const handleBatchAltChange = (val: string) => {
-        setUploadAlt(val)
-        setPendingFiles((prev) =>
-            prev.map((item) => ({ ...item, alt: val }))
-        )
-    }
-
     const handleUploadClick = async () => {
         if (pendingFiles.length === 0) return
 
@@ -204,7 +196,7 @@ export default function AdminGalleryPage() {
                     handleUploadUrl: "/api/gallery/upload",
                 })
 
-                const itemAlt = item.alt.trim() || uploadAlt.trim()
+                const itemAlt = item.alt.trim()
 
                 const response = await fetch("/api/gallery", {
                     method: "POST",
@@ -227,7 +219,6 @@ export default function AdminGalleryPage() {
 
             pendingFiles.forEach((item) => URL.revokeObjectURL(item.previewUrl))
             setPendingFiles([])
-            setUploadAlt("")
             await fetchImages()
         } catch (err) {
             console.error("Upload failed:", err)
@@ -431,45 +422,25 @@ export default function AdminGalleryPage() {
                     )}
                 </div>
 
-                <div className="mt-4 flex flex-wrap items-center gap-6">
-                    <div className="flex items-center gap-3">
-                        <label
-                            htmlFor="upload-category"
-                            className="font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-[#8a8678]"
-                        >
-                            Category
-                        </label>
+                <div className="mt-4 flex items-center gap-3">
+                    <label
+                        htmlFor="upload-category"
+                        className="font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-[#8a8678]"
+                    >
+                        Category
+                    </label>
 
-                        <select
-                            id="upload-category"
-                            value={uploadCategory}
-                            onChange={(e) => setUploadCategory(e.target.value)}
-                            className="rounded-md border border-[#d8d6cf] bg-[#faf9f6] px-3 py-2 font-[family-name:var(--font-inter)] text-sm text-[#1f211d] focus:border-[#435236] focus:outline-none"
-                        >
-                            <option value="wedding">Wedding</option>
-                            <option value="farewell">Farewell</option>
-                            <option value="event">Event</option>
-                            <option value="general">General</option>
-                        </select>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                        <label
-                            htmlFor="upload-alt"
-                            className="font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-[#8a8678]"
-                        >
-                            Default Description / Alt Text
-                        </label>
-
-                        <input
-                            id="upload-alt"
-                            type="text"
-                            placeholder="e.g. wedding-florist-mandurah-bridal-bouquet"
-                            value={uploadAlt}
-                            onChange={(e) => handleBatchAltChange(e.target.value)}
-                            className="w-72 rounded-md border border-[#d8d6cf] bg-[#faf9f6] px-3 py-2 font-[family-name:var(--font-inter)] text-sm text-[#1f211d] focus:border-[#435236] focus:outline-none"
-                        />
-                    </div>
+                    <select
+                        id="upload-category"
+                        value={uploadCategory}
+                        onChange={(e) => setUploadCategory(e.target.value)}
+                        className="rounded-md border border-[#d8d6cf] bg-[#faf9f6] px-3 py-2 font-[family-name:var(--font-inter)] text-sm text-[#1f211d] focus:border-[#435236] focus:outline-none"
+                    >
+                        <option value="wedding">Wedding</option>
+                        <option value="farewell">Farewell</option>
+                        <option value="event">Event</option>
+                        <option value="general">General</option>
+                    </select>
                 </div>
 
                 {pendingFiles.length > 0 && (
