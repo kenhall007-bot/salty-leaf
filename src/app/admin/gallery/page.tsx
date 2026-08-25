@@ -36,6 +36,7 @@ type PendingFile = {
     id: string
     file: File
     previewUrl: string
+    alt: string
     originalSize?: number
     compressedSize?: number
 }
@@ -156,6 +157,7 @@ export default function AdminGalleryPage() {
                     id: `${file.name}-${file.lastModified}-${Math.random()}`,
                     file,
                     previewUrl: URL.createObjectURL(file),
+                    alt: uploadAlt || "",
                     originalSize,
                     compressedSize,
                 })
@@ -176,6 +178,19 @@ export default function AdminGalleryPage() {
         setPendingFiles((prev) => prev.filter((item) => item.id !== id))
     }
 
+    const updatePendingFileAlt = (id: string, alt: string) => {
+        setPendingFiles((prev) =>
+            prev.map((item) => (item.id === id ? { ...item, alt } : item))
+        )
+    }
+
+    const handleBatchAltChange = (val: string) => {
+        setUploadAlt(val)
+        setPendingFiles((prev) =>
+            prev.map((item) => ({ ...item, alt: val }))
+        )
+    }
+
     const handleUploadClick = async () => {
         if (pendingFiles.length === 0) return
 
@@ -189,13 +204,15 @@ export default function AdminGalleryPage() {
                     handleUploadUrl: "/api/gallery/upload",
                 })
 
+                const itemAlt = item.alt.trim() || uploadAlt.trim()
+
                 const response = await fetch("/api/gallery", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         url: blob.url,
                         category: uploadCategory,
-                        alt: uploadAlt,
+                        alt: itemAlt,
                     }),
                 })
 
@@ -441,7 +458,7 @@ export default function AdminGalleryPage() {
                             htmlFor="upload-alt"
                             className="font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[0.12em] text-[#8a8678]"
                         >
-                            Description / Alt Text
+                            Default Description / Alt Text
                         </label>
 
                         <input
@@ -449,7 +466,7 @@ export default function AdminGalleryPage() {
                             type="text"
                             placeholder="e.g. wedding-florist-mandurah-bridal-bouquet"
                             value={uploadAlt}
-                            onChange={(e) => setUploadAlt(e.target.value)}
+                            onChange={(e) => handleBatchAltChange(e.target.value)}
                             className="w-72 rounded-md border border-[#d8d6cf] bg-[#faf9f6] px-3 py-2 font-[family-name:var(--font-inter)] text-sm text-[#1f211d] focus:border-[#435236] focus:outline-none"
                         />
                     </div>
@@ -481,36 +498,56 @@ export default function AdminGalleryPage() {
                             </p>
                         )}
 
-                        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                             {pendingFiles.map((item) => (
                                 <div
                                     key={item.id}
-                                    className="group relative aspect-square overflow-hidden rounded-md border border-[#e3e0d6]"
+                                    className="flex flex-col gap-2 rounded-lg border border-[#e3e0d6] bg-[#faf9f6] p-3 shadow-xs"
                                 >
-                                    <img
-                                        src={item.previewUrl}
-                                        alt={item.file.name}
-                                        className="h-full w-full object-cover"
-                                    />
+                                    <div className="group relative aspect-video w-full overflow-hidden rounded-md bg-black/5 border border-[#e3e0d6]">
+                                        <img
+                                            src={item.previewUrl}
+                                            alt={item.file.name}
+                                            className="h-full w-full object-cover"
+                                        />
 
-                                    {item.originalSize &&
-                                        item.compressedSize &&
-                                        item.compressedSize < item.originalSize && (
-                                            <div className="absolute bottom-0 inset-x-0 bg-black/75 px-1 py-0.5 text-center font-[family-name:var(--font-inter)] text-[9px] font-medium text-white backdrop-blur-xs">
-                                                {formatFileSize(item.originalSize)} → {formatFileSize(item.compressedSize)}
-                                            </div>
+                                        {item.originalSize &&
+                                            item.compressedSize &&
+                                            item.compressedSize < item.originalSize && (
+                                                <div className="absolute bottom-1 left-1 rounded bg-black/75 px-1.5 py-0.5 font-[family-name:var(--font-inter)] text-[9px] font-medium text-white backdrop-blur-xs">
+                                                    {formatFileSize(item.originalSize)} → {formatFileSize(item.compressedSize)}
+                                                </div>
+                                            )}
+
+                                        {!isUploading && (
+                                            <button
+                                                type="button"
+                                                onClick={() => removePendingFile(item.id)}
+                                                aria-label="Remove"
+                                                className="absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/60 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                                            >
+                                                <X className="h-3.5 w-3.5" strokeWidth={2} />
+                                            </button>
                                         )}
+                                    </div>
 
-                                    {!isUploading && (
-                                        <button
-                                            type="button"
-                                            onClick={() => removePendingFile(item.id)}
-                                            aria-label="Remove"
-                                            className="absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/60 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                                    <div className="flex flex-col gap-1">
+                                        <label
+                                            htmlFor={`alt-${item.id}`}
+                                            className="font-[family-name:var(--font-inter)] text-[10px] font-semibold uppercase tracking-[0.1em] text-[#8a8678]"
                                         >
-                                            <X className="h-3.5 w-3.5" strokeWidth={2} />
-                                        </button>
-                                    )}
+                                            Alt Text / SEO Description
+                                        </label>
+                                        <input
+                                            id={`alt-${item.id}`}
+                                            type="text"
+                                            placeholder="e.g. mandurah-wedding-bridal-bouquet"
+                                            value={item.alt}
+                                            onChange={(e) => updatePendingFileAlt(item.id, e.target.value)}
+                                            disabled={isUploading}
+                                            className="w-full rounded-md border border-[#d8d6cf] bg-white px-2.5 py-1.5 font-[family-name:var(--font-inter)] text-xs text-[#1f211d] focus:border-[#435236] focus:outline-none disabled:bg-[#eee]"
+                                        />
+                                    </div>
                                 </div>
                             ))}
                         </div>
