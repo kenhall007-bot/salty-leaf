@@ -320,7 +320,6 @@ export default function Contact() {
                                     <SelectTrigger className="mt-7 h-12 w-full rounded-none border-0 border-b border-[#bcb8af] bg-transparent px-0 font-[family-name:var(--font-cormorant)] text-xl font-normal text-[#25251f] shadow-none focus:ring-0 focus:ring-offset-0">
                                         <SelectValue placeholder="Select an event" />
                                     </SelectTrigger>
-
                                     <SelectContent>
                                         <SelectItem value="wedding">
                                             Wedding
