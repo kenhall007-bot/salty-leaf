@@ -41,11 +41,14 @@ export default function Footer() {
                         </Link>
 
                         <p className="mt-4 font-[family-name:var(--font-cormorant)] text-lg text-[#d8d6cf]">
-                            Bespoke floral experiences for weddings, funeral tributes, and events across Mandurah and surrounding Peel suburbs.
+                            Beautifully crafted floral arrangements for weddings, farewell tributes, and events across the Perth, Peel and Southwest regions.
                         </p>
 
                         <p className="mt-4 font-[family-name:var(--font-inter)] text-xs tracking-wider text-[#8a8678]">
                             5/10 Rafferty Road, Mandurah WA 6210
+                        </p>
+                        <p className="mt-4 font-[family-name:var(--font-cormorant)] text-lg text-[#d8d6cf]">
+                            By Appointment Only
                         </p>
                     </div>
 
@@ -72,7 +75,7 @@ export default function Footer() {
 
                     <div className="lg:col-span-2">
                         <h4 className="font-[family-name:var(--font-cormorant)] text-xl font-semibold uppercase tracking-[0.1em] text-white">
-                            Areas We Serve
+                            Areas we service
                         </h4>
 
                         <div className="mt-2 h-[2px] w-10 bg-[#8a8678]" />
