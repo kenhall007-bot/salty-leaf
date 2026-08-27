@@ -325,7 +325,7 @@ export default function EventFloristMandurah() {
                         className="w-full"
                     >
                         <img
-                            src="/GalaDinner.jpg"
+                            src="/GalaDinner.JPG"
                             alt="Event florist Mandurah - venue floral styling"
                             className="h-[500px] w-full object-cover sm:h-[600px] lg:h-[680px]"
                         />
