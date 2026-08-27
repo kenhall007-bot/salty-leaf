@@ -298,7 +298,7 @@ export default function WeddingFloristMandurah() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="/img2.jpg"
+                    src="/event2.jpeg"
                     alt="Wedding florist Mandurah - ceremony floral styling"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -319,7 +319,7 @@ export default function WeddingFloristMandurah() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="font-[family-name:var(--font-cormorant)] text-5xl font-light text-white sm:text-6xl lg:text-7xl"
                     >
-                        Let us Create Something Beautifuls
+                        Let us Create Something Beautiful
                     </motion.h2>
 
                     <motion.p
