@@ -298,7 +298,7 @@ export default function WeddingFloristMandurah() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="/event2.jpeg"
+                    src="/img2.JPG"
                     alt="Wedding florist Mandurah - ceremony floral styling"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
