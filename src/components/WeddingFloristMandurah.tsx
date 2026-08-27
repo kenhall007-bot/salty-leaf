@@ -63,7 +63,7 @@ export default function WeddingFloristMandurah() {
                     initial={{ scale: 1.15 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-                    src="/Wedding flowers.jpeg"
+                    src="/Weddingflowers.jpeg"
                     alt="Wedding florist Mandurah - bridal bouquets and wedding flowers"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
