@@ -319,7 +319,7 @@ export default function WeddingFloristMandurah() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="font-[family-name:var(--font-cormorant)] text-5xl font-light text-white sm:text-6xl lg:text-7xl"
                     >
-                        Let us Create Something Beautiful
+                        Let us Create Something Beautifuls
                     </motion.h2>
 
                     <motion.p
