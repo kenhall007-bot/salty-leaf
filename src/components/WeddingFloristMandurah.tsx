@@ -63,7 +63,7 @@ export default function WeddingFloristMandurah() {
                     initial={{ scale: 1.15 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-                    src="/Weddingflowers.jpeg"
+                    src="/img1.jpeg"
                     alt="Wedding florist Mandurah - bridal bouquets and wedding flowers"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -298,7 +298,7 @@ export default function WeddingFloristMandurah() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="/Wedding ceremony flowers.jpg"
+                    src="/weddingceremonyflowers.jpg"
                     alt="Wedding florist Mandurah - ceremony floral styling"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
