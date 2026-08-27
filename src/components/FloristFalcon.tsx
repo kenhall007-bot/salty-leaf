@@ -13,7 +13,7 @@ const fadeUp = {
 const services = [
     {
         title: "Wedding Flowers",
-        text: "Bespoke bridal bouquets, ceremony arches, and floral styling for Falcon beach celebrations.",
+        text: "Bouquets, buttonholes, ceremony installations and reception florals designed with intention and care for your special day in Falcon.",
     },
     {
         title: "Funeral Flowers",
@@ -21,11 +21,11 @@ const services = [
     },
     {
         title: "Event Flowers",
-        text: "Custom event styling, table centerpieces, and party florals for special occasions.",
+        text: "Custom event styling, table centerpieces, and party florals for functions and celebrations.",
     },
     {
-        title: "Same-Day Delivery",
-        text: "Fresh seasonal floral bouquets hand-delivered directly throughout Falcon and nearby areas.",
+        title: "Styling & Hire",
+        text: "Floral signage, plinths, vessels, vases and curated styling to complete your celebration.",
     },
 ]
 
@@ -68,7 +68,7 @@ export default function FloristFalcon() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="mt-4 max-w-lg font-[family-name:var(--font-cormorant)] text-xl font-light text-white/90 sm:text-2xl"
                         >
-                            Bespoke floral design and delivery for weddings, farewells, and events in Falcon.
+                            Seasonal handcrafted floral arrangements for weddings, farewells, and events in Falcon.
                         </motion.p>
 
                         <motion.div
@@ -104,11 +104,11 @@ export default function FloristFalcon() {
                         <div className="mt-9 h-[2px] w-40 bg-[#25251f]" />
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Located right along Falcon Bay, Salty Leaf crafts artisanal flowers for locals and coastal gatherings throughout Falcon.
+                            Salty Leaf is your local Falcon florist creating beautiful floral experiences for every occasion.
                         </p>
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Whether you need delicate wedding blooms or thoughtful sympathy arrangements delivered to your home, we provide personalized floral artistry.
+                            Whether you are planning a wedding, hosting an event, or sending sympathy flowers, we craft elegant floral arrangements with fresh seasonal blooms.
                         </p>
                     </motion.div>
 
@@ -198,7 +198,7 @@ export default function FloristFalcon() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="font-[family-name:var(--font-cormorant)] text-5xl font-light text-white sm:text-6xl lg:text-7xl"
                     >
-                        Serving Falcon &amp; Surrounding Areas
+                        Servicing Falcon &amp; Surrounding Areas
                     </motion.h2>
 
                     <motion.p
@@ -206,7 +206,7 @@ export default function FloristFalcon() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl font-medium text-white sm:text-4xl"
                     >
-                        Get in touch to order your flowers or check delivery options.
+                        Reach out today to discuss your floral needs.
                     </motion.p>
 
                     <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }}>

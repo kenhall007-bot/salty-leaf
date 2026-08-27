@@ -13,19 +13,19 @@ const fadeUp = {
 const services = [
     {
         title: "Wedding Flowers",
-        text: "Bespoke bridal bouquets, ceremony arches, and reception styling for weddings in Lakelands.",
+        text: "Bouquets, buttonholes, ceremony installations and reception florals designed with intention and care for your special day in Lakelands.",
     },
     {
         title: "Funeral Flowers",
-        text: "Thoughtful funeral wreaths, casket sprays, and sympathy bouquets designed with reverence.",
+        text: "Respectful casket sheaths, funeral wreaths, and sympathy flowers crafted with care.",
     },
     {
         title: "Event Flowers",
-        text: "Custom event florals for corporate functions, birthdays, and community celebrations.",
+        text: "Custom event styling, table centerpieces, and party florals for functions and celebrations.",
     },
     {
-        title: "Same-Day Delivery",
-        text: "Prompt local delivery of fresh seasonal flowers to homes and venues across Lakelands.",
+        title: "Styling & Hire",
+        text: "Floral signage, plinths, vessels, vases and curated styling to complete your celebration.",
     },
 ]
 
@@ -68,7 +68,7 @@ export default function FloristLakelands() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="mt-4 max-w-lg font-[family-name:var(--font-cormorant)] text-xl font-light text-white/90 sm:text-2xl"
                         >
-                            Fresh, handcrafted floral designs for weddings, funerals, and special events in Lakelands.
+                            Seasonal handcrafted floral arrangements for weddings, farewells, and events in Lakelands.
                         </motion.p>
 
                         <motion.div
@@ -104,11 +104,11 @@ export default function FloristLakelands() {
                         <div className="mt-9 h-[2px] w-40 bg-[#25251f]" />
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Serving the growing family community of Lakelands near Black Swan Lake, Salty Leaf crafts thoughtful floral experiences for every occasion.
+                            Salty Leaf is your local Lakelands florist creating beautiful floral experiences for every occasion.
                         </p>
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Whether planning a local ceremony or sending sympathy flowers to a family home, we take pride in delivering long-lasting, beautifully arranged blooms.
+                            Whether you are planning a wedding, hosting an event, or sending sympathy flowers, we craft elegant floral arrangements with fresh seasonal blooms.
                         </p>
                     </motion.div>
 
@@ -198,7 +198,7 @@ export default function FloristLakelands() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="font-[family-name:var(--font-cormorant)] text-5xl font-light text-white sm:text-6xl lg:text-7xl"
                     >
-                        Serving Lakelands &amp; Surrounding Areas
+                        Servicing Lakelands &amp; Surrounding Areas
                     </motion.h2>
 
                     <motion.p
@@ -206,7 +206,7 @@ export default function FloristLakelands() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl font-medium text-white sm:text-4xl"
                     >
-                        Reach out today to discuss your flower order.
+                        Reach out today to discuss your floral needs.
                     </motion.p>
 
                     <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }}>

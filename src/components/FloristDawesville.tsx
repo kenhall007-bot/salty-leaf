@@ -13,19 +13,19 @@ const fadeUp = {
 const services = [
     {
         title: "Wedding Flowers",
-        text: "Custom bridal bouquets, ceremony floral arches, and table centrepieces designed for Dawesville weddings.",
+        text: "Bouquets, buttonholes, ceremony installations and reception florals designed with intention and care for your special day in Dawesville.",
     },
     {
         title: "Funeral Flowers",
-        text: "Thoughtful casket sprays, memorial wreaths, and sympathy flowers delivered with compassion.",
+        text: "Respectful casket sheaths, funeral wreaths, and sympathy flowers crafted with care.",
     },
     {
         title: "Event Flowers",
-        text: "Bespoke floral styling for private celebrations, milestone birthdays, and community events.",
+        text: "Custom event styling, table centerpieces, and party florals for functions and celebrations.",
     },
     {
-        title: "Same-Day Delivery",
-        text: "Fresh seasonal flowers hand-delivered straight to homes and function spaces across Dawesville.",
+        title: "Styling & Hire",
+        text: "Floral signage, plinths, vessels, vases and curated styling to complete your celebration.",
     },
 ]
 
@@ -68,7 +68,7 @@ export default function FloristDawesville() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="mt-4 max-w-lg font-[family-name:var(--font-cormorant)] text-xl font-light text-white/90 sm:text-2xl"
                         >
-                            Seasonal, handcrafted floral arrangements for weddings, farewells, and events in Dawesville.
+                            Seasonal handcrafted floral arrangements for weddings, farewells, and events in Dawesville.
                         </motion.p>
 
                         <motion.div
@@ -104,11 +104,11 @@ export default function FloristDawesville() {
                         <div className="mt-9 h-[2px] w-40 bg-[#25251f]" />
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Salty Leaf brings bespoke floral designs to residents and venues throughout Dawesville, nestled between the Peel-Harvey Estuary and the Indian Ocean.
+                            Salty Leaf is your local Dawesville florist creating beautiful floral experiences for every occasion.
                         </p>
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            From waterside weddings near the Dawesville Cut to personal home deliveries, we craft beautiful arrangements tailored to your occasion.
+                            Whether you are planning a wedding, hosting an event, or sending sympathy flowers, we craft elegant floral arrangements with fresh seasonal blooms.
                         </p>
                     </motion.div>
 
@@ -198,7 +198,7 @@ export default function FloristDawesville() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="font-[family-name:var(--font-cormorant)] text-5xl font-light text-white sm:text-6xl lg:text-7xl"
                     >
-                        Serving Dawesville &amp; Surrounding Areas
+                        Servicing Dawesville &amp; Surrounding Areas
                     </motion.h2>
 
                     <motion.p
@@ -206,7 +206,7 @@ export default function FloristDawesville() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl font-medium text-white sm:text-4xl"
                     >
-                        Contact us today to arrange your flower delivery.
+                        Reach out today to discuss your floral needs.
                     </motion.p>
 
                     <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }}>

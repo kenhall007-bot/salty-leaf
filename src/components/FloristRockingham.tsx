@@ -13,19 +13,19 @@ const fadeUp = {
 const services = [
     {
         title: "Wedding Flowers",
-        text: "Bespoke bridal bouquets, ceremony floral arches, and reception centrepieces for Rockingham weddings.",
+        text: "Bouquets, buttonholes, ceremony installations and reception florals designed with intention and care for your special day in Rockingham.",
     },
     {
         title: "Funeral Flowers",
-        text: "Compassionate casket sprays, funeral wreaths, and sympathy floral tributes delivered with dignity.",
+        text: "Respectful casket sheaths, funeral wreaths, and sympathy flowers crafted with care.",
     },
     {
         title: "Event Flowers",
-        text: "Impactful event styling, corporate arrangements, and party florals for Rockingham functions.",
+        text: "Custom event styling, table centerpieces, and party florals for functions and celebrations.",
     },
     {
-        title: "Same-Day Delivery",
-        text: "Fresh seasonal floral bouquets hand-delivered directly to residences, churches, and venues in Rockingham.",
+        title: "Styling & Hire",
+        text: "Floral signage, plinths, vessels, vases and curated styling to complete your celebration.",
     },
 ]
 
@@ -68,7 +68,7 @@ export default function FloristRockingham() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="mt-4 max-w-lg font-[family-name:var(--font-cormorant)] text-xl font-light text-white/90 sm:text-2xl"
                         >
-                            Bespoke floral design for weddings, funerals, and corporate events in Rockingham.
+                            Seasonal handcrafted floral arrangements for weddings, farewells, and events in Rockingham.
                         </motion.p>
 
                         <motion.div
@@ -104,11 +104,11 @@ export default function FloristRockingham() {
                         <div className="mt-9 h-[2px] w-40 bg-[#25251f]" />
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Salty Leaf extends its floral styling services to Rockingham and Shoalwater foreshore venues, crafting custom floral installations and bouquets.
+                            Salty Leaf is your local Rockingham florist creating beautiful floral experiences for every occasion.
                         </p>
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            From coastal wedding ceremonies along Rockingham Beach to sympathy flower deliveries, we bring natural beauty and attention to detail to every order.
+                            Whether you are planning a wedding, hosting an event, or sending sympathy flowers, we craft elegant floral arrangements with fresh seasonal blooms.
                         </p>
                     </motion.div>
 
@@ -198,7 +198,7 @@ export default function FloristRockingham() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="font-[family-name:var(--font-cormorant)] text-5xl font-light text-white sm:text-6xl lg:text-7xl"
                     >
-                        Serving Rockingham &amp; Surrounding Areas
+                        Servicing Rockingham &amp; Surrounding Areas
                     </motion.h2>
 
                     <motion.p
@@ -206,7 +206,7 @@ export default function FloristRockingham() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl font-medium text-white sm:text-4xl"
                     >
-                        Contact us today for custom floral enquiries.
+                        Reach out today to discuss your floral needs.
                     </motion.p>
 
                     <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }}>

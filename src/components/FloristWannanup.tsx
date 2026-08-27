@@ -13,19 +13,19 @@ const fadeUp = {
 const services = [
     {
         title: "Wedding Flowers",
-        text: "Bespoke bridal bouquets, ceremony floral arches, and reception arrangements tailored for Wannanup celebrations.",
+        text: "Bouquets, buttonholes, ceremony installations and reception florals designed with intention and care for your special day in Wannanup.",
     },
     {
         title: "Funeral Flowers",
-        text: "Compassionate casket sprays, funeral wreaths, and memorial tributes delivered with dignity.",
+        text: "Respectful casket sheaths, funeral wreaths, and sympathy flowers crafted with care.",
     },
     {
         title: "Event Flowers",
-        text: "Custom floral styling for corporate functions, anniversaries, and private gatherings.",
+        text: "Custom event styling, table centerpieces, and party florals for functions and celebrations.",
     },
     {
-        title: "Same-Day Delivery",
-        text: "Fresh, seasonal floral arrangements hand-delivered directly to residences and venues across Wannanup.",
+        title: "Styling & Hire",
+        text: "Floral signage, plinths, vessels, vases and curated styling to complete your celebration.",
     },
 ]
 
@@ -68,7 +68,7 @@ export default function FloristWannanup() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="mt-4 max-w-lg font-[family-name:var(--font-cormorant)] text-xl font-light text-white/90 sm:text-2xl"
                         >
-                            Artisanal, handcrafted floral arrangements for weddings, farewells, and events in Wannanup.
+                            Seasonal handcrafted floral arrangements for weddings, farewells, and events in Wannanup.
                         </motion.p>
 
                         <motion.div
@@ -104,11 +104,11 @@ export default function FloristWannanup() {
                         <div className="mt-9 h-[2px] w-40 bg-[#25251f]" />
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Salty Leaf proudly services the coastal suburb of Wannanup, known for Avalon Beach and the Port Bouvard canals.
+                            Salty Leaf is your local Wannanup florist creating beautiful floral experiences for every occasion.
                         </p>
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Whether you are hosting a seaside wedding, planning a family event, or sending sympathy flowers, we craft elegant floral arrangements using fresh seasonal blooms.
+                            Whether you are planning a wedding, hosting an event, or sending sympathy flowers, we craft elegant floral arrangements with fresh seasonal blooms.
                         </p>
                     </motion.div>
 
@@ -198,7 +198,7 @@ export default function FloristWannanup() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="font-[family-name:var(--font-cormorant)] text-5xl font-light text-white sm:text-6xl lg:text-7xl"
                     >
-                        Serving Wannanup &amp; Surrounding Areas
+                        Servicing Wannanup &amp; Surrounding Areas
                     </motion.h2>
 
                     <motion.p

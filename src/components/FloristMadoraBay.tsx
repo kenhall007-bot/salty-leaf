@@ -13,19 +13,19 @@ const fadeUp = {
 const services = [
     {
         title: "Wedding Flowers",
-        text: "Custom bridal bouquets, ceremony arches, and floral styling for coastal weddings in Madora Bay.",
+        text: "Bouquets, buttonholes, ceremony installations and reception florals designed with intention and care for your special day in Madora Bay.",
     },
     {
         title: "Funeral Flowers",
-        text: "Compassionate casket sprays, memorial wreaths, and sympathy flowers delivered with care.",
+        text: "Respectful casket sheaths, funeral wreaths, and sympathy flowers crafted with care.",
     },
     {
         title: "Event Flowers",
-        text: "Elevated floral arrangements for corporate dinners, launches, and private celebrations.",
+        text: "Custom event styling, table centerpieces, and party florals for functions and celebrations.",
     },
     {
-        title: "Same-Day Delivery",
-        text: "Fresh seasonal floral bouquets hand-delivered directly to residences and venues in Madora Bay.",
+        title: "Styling & Hire",
+        text: "Floral signage, plinths, vessels, vases and curated styling to complete your celebration.",
     },
 ]
 
@@ -68,7 +68,7 @@ export default function FloristMadoraBay() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="mt-4 max-w-lg font-[family-name:var(--font-cormorant)] text-xl font-light text-white/90 sm:text-2xl"
                         >
-                            Bespoke floral styling for weddings, funerals, and celebrations in Madora Bay.
+                            Seasonal handcrafted floral arrangements for weddings, farewells, and events in Madora Bay.
                         </motion.p>
 
                         <motion.div
@@ -104,11 +104,11 @@ export default function FloristMadoraBay() {
                         <div className="mt-9 h-[2px] w-40 bg-[#25251f]" />
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            Salty Leaf is proud to serve Madora Bay, an idyllic northern coastal community of Mandurah known for its tranquil beaches and ocean views.
+                            Salty Leaf is your local Madora Bay florist creating beautiful floral experiences for every occasion.
                         </p>
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            We design seasonal, organic floral arrangements tailored for beachfront weddings, private parties, and sympathetic floral tributes.
+                            Whether you are planning a wedding, hosting an event, or sending sympathy flowers, we craft elegant floral arrangements with fresh seasonal blooms.
                         </p>
                     </motion.div>
 
@@ -198,7 +198,7 @@ export default function FloristMadoraBay() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="font-[family-name:var(--font-cormorant)] text-5xl font-light text-white sm:text-6xl lg:text-7xl"
                     >
-                        Serving Madora Bay &amp; Surrounding Areas
+                        Servicing Madora Bay &amp; Surrounding Areas
                     </motion.h2>
 
                     <motion.p
@@ -206,7 +206,7 @@ export default function FloristMadoraBay() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl font-medium text-white sm:text-4xl"
                     >
-                        Get in touch today to place your order.
+                        Reach out today to discuss your floral needs.
                     </motion.p>
 
                     <motion.div variants={fadeUp} transition={{ duration: 0.8, ease: "easeOut" }}>
