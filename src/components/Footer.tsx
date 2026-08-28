@@ -44,7 +44,7 @@ export default function Footer() {
                             Beautifully crafted floral arrangements for weddings, farewell tributes, and events across the Perth, Peel and Southwest regions.
                         </p>
 
-                        <p className="mt-4 font-[family-name:var(--font-inter)] text-xs tracking-wider text-[#8a8678]">
+                        <p className="mt-4 font-[family-name:var(--font-cormorant)] text-lg text-[#d8d6cf]">
                             5/10 Rafferty Road, Mandurah WA 6210
                         </p>
                         <p className="mt-4 font-[family-name:var(--font-cormorant)] text-lg text-[#d8d6cf]">
