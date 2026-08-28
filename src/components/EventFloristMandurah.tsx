@@ -436,7 +436,7 @@ export default function EventFloristMandurah() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="/Event Centrepieces.jpeg"
+                    src="/Eventbottom.png"
                     alt="Event florist Mandurah - floral centerpiece installation"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
