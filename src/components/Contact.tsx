@@ -75,6 +75,28 @@ export default function Contact() {
         setIsSubmitting(true)
 
         try {
+            const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "39c33735-5ec8-48ad-b21f-471ca9ffb36f"
+
+            const web3FormData = new FormData()
+            web3FormData.append("access_key", accessKey)
+            web3FormData.append("name", formData.name)
+            web3FormData.append("email", formData.email)
+            web3FormData.append("phone", formData.phone)
+            web3FormData.append("eventType", formData.eventType)
+            if (date) {
+                web3FormData.append("eventDate", format(date, "yyyy-MM-dd"))
+            }
+            if (formData.venue) {
+                web3FormData.append("venue", formData.venue)
+            }
+            web3FormData.append("message", formData.message)
+            web3FormData.append("subject", `New Enquiry from ${formData.name} - Salty Leaf`)
+
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: web3FormData,
+            }).catch((err) => console.error("Web3Forms submission error:", err))
+
             const response = await fetch("/api/enquiries", {
                 method: "POST",
                 headers: {
