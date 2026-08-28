@@ -120,7 +120,7 @@ export default function FloristMadoraBay() {
                         className="w-full"
                     >
                         <img
-                            src="/home3.jpg"
+                            src="/Floralweddingdecorations.JPG"
                             alt="Florist Madora Bay - coastal floral arrangement"
                             className="h-[450px] w-full object-cover sm:h-[550px] lg:h-[600px]"
                         />

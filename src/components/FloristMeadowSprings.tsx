@@ -120,7 +120,7 @@ export default function FloristMeadowSprings() {
                         className="w-full"
                     >
                         <img
-                            src="/entrance.png"
+                            src="/GalaDinner.JPG"
                             alt="Florist Meadow Springs - seasonal flowers"
                             className="h-[450px] w-full object-cover sm:h-[550px] lg:h-[600px]"
                         />

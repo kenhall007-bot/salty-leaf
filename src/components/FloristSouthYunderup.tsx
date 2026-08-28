@@ -120,7 +120,7 @@ export default function FloristSouthYunderup() {
                         className="w-full"
                     >
                         <img
-                            src="/home4.png"
+                            src="/gallery/img (12).jpg"
                             alt="Florist South Yunderup - riverfront floral arrangement"
                             className="h-[450px] w-full object-cover sm:h-[550px] lg:h-[600px]"
                         />
