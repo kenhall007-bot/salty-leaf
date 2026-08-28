@@ -22,6 +22,12 @@ const suburbs = [
     { name: "Florist Wannanup", href: "/florist-wannanup" },
     { name: "Florist South Yunderup", href: "/florist-south-yunderup" },
     { name: "Florist Secret Harbour", href: "/florist-secret-harbour" },
+    { name: "Wedding Florist Margaret River", href: "/wedding-florist-margaret-river" },
+    { name: "Wedding Florist Yallingup", href: "/wedding-florist-yallingup" },
+    { name: "Wedding Florist Dunsborough", href: "/wedding-florist-dunsborough" },
+    { name: "Wedding Florist Busselton", href: "/wedding-florist-busselton" },
+    { name: "Wedding Florist Cowaramup", href: "/wedding-florist-cowaramup" },
+    { name: "Wedding Florist Witchcliffe", href: "/wedding-florist-witchcliffe" },
 ]
 
 export default function Footer() {

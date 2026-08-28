@@ -108,6 +108,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
         {
+            url: `${baseUrl}/wedding-florist-margaret-river`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/wedding-florist-yallingup`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/wedding-florist-dunsborough`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/wedding-florist-busselton`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/wedding-florist-cowaramup`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/wedding-florist-witchcliffe`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
             url: `${baseUrl}/contact`,
             lastModified,
             changeFrequency: "monthly",
