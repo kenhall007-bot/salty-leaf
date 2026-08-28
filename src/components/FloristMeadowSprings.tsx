@@ -39,7 +39,7 @@ export default function FloristMeadowSprings() {
                     initial={{ scale: 1.15 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-                    src="https://images.unsplash.com/photo-1683485257992-26085812f063?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="/weddingbg.JPG"
                     alt="Florist Meadow Springs - Salty Leaf floral arrangements"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -120,7 +120,7 @@ export default function FloristMeadowSprings() {
                         className="w-full"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?q=80&w=1200&auto=format&fit=crop"
+                            src="/entrance.png"
                             alt="Florist Meadow Springs - seasonal flowers"
                             className="h-[450px] w-full object-cover sm:h-[550px] lg:h-[600px]"
                         />
@@ -177,7 +177,7 @@ export default function FloristMeadowSprings() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
+                    src="/event1.JPEG"
                     alt="Florist Meadow Springs - flower delivery"
                     className="absolute inset-0 h-full w-full object-cover"
                 />

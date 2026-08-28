@@ -39,7 +39,7 @@ export default function FloristHallsHead() {
                     initial={{ scale: 1.15 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-                    src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1600&auto=format&fit=crop"
+                    src="/wedding1.png"
                     alt="Florist Halls Head - Salty Leaf floral arrangements"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -120,7 +120,7 @@ export default function FloristHallsHead() {
                         className="w-full"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop"
+                            src="/event1.jpeg"
                             alt="Florist Halls Head - bespoke flower arrangement"
                             className="h-[450px] w-full object-cover sm:h-[550px] lg:h-[600px]"
                         />
@@ -177,7 +177,7 @@ export default function FloristHallsHead() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
+                    src="/events.png"
                     alt="Florist Halls Head - delivery and floral styling"
                     className="absolute inset-0 h-full w-full object-cover"
                 />

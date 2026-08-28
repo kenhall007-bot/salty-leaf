@@ -39,7 +39,7 @@ export default function FloristSouthYunderup() {
                     initial={{ scale: 1.15 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-                    src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?q=80&w=1600&auto=format&fit=crop"
+                    src="/Australian native wedding flowers.JPG"
                     alt="Florist South Yunderup - Salty Leaf floral arrangements"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -120,7 +120,7 @@ export default function FloristSouthYunderup() {
                         className="w-full"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop"
+                            src="/home4.png"
                             alt="Florist South Yunderup - riverfront floral arrangement"
                             className="h-[450px] w-full object-cover sm:h-[550px] lg:h-[600px]"
                         />
@@ -177,7 +177,7 @@ export default function FloristSouthYunderup() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1600&auto=format&fit=crop"
+                    src="/contactbg.png"
                     alt="Florist South Yunderup - flower delivery"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
