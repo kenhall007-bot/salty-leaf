@@ -132,7 +132,7 @@ export default function WeddingFloristWitchcliffe() {
                         <div className="mt-9 h-[2px] w-40 bg-[#25251f]" />
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            From eco-village forest ceremonies to intimate country celebrations across Witchcliffe and the southern Margaret River region, we source the most premium seasonal blooms for your wedding day.
+                            From forest ceremonies to intimate country celebrations across Witchcliffe and the southern Margaret River region, we source the most premium seasonal blooms for your wedding day.
                         </p>
 
                         <CategoryGalleryModal

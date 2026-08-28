@@ -5,7 +5,7 @@ import React from "react"
 export const metadata: Metadata = {
     title: "Wedding Florist Witchcliffe",
     description:
-        "Bespoke wedding flowers and bridal bouquets in Witchcliffe, WA. From eco-village forest ceremony arches to reception centrepieces, Salty Leaf crafts floral designs tailored to your wedding story.",
+        "Bespoke wedding flowers and bridal bouquets in Witchcliffe, WA. From forest ceremony arches to reception centrepieces, Salty Leaf crafts floral designs tailored to your wedding story.",
     alternates: {
         canonical: "/wedding-florist-witchcliffe",
     },
