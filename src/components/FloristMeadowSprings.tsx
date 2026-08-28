@@ -39,7 +39,7 @@ export default function FloristMeadowSprings() {
                     initial={{ scale: 1.15 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-                    src="/weddingbg.JPG"
+                    src="/weddingbg.jpg"
                     alt="Florist Meadow Springs - Salty Leaf floral arrangements"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -177,7 +177,7 @@ export default function FloristMeadowSprings() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-                    src="/event1.JPEG"
+                    src="/event1.jpeg"
                     alt="Florist Meadow Springs - flower delivery"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
