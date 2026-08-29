@@ -132,7 +132,7 @@ export default function WeddingFloristYallingup() {
                         <div className="mt-9 h-[2px] w-40 bg-[#25251f]" />
 
                         <p className="mt-7 max-w-md font-[family-name:var(--font-cormorant)] text-lg font-medium leading-[1.35] text-[#35352e] sm:text-2xl">
-                            From coastal cliffside ceremonies to luxury estate celebrations across Yallingup and the Southwest region, we source the most premium seasonal blooms for your wedding day.
+                            From coastal cliffside ceremonies to private estate celebrations across Yallingup and the Southwest region, we source the most premium seasonal blooms for your wedding day.
                         </p>
 
                         <CategoryGalleryModal
